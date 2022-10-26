@@ -21,7 +21,7 @@ public class Ingredient : MonoBehaviour
     public void SetIngredient(int code){
         ingCode = code;
     }
-    public int getIngredient(){
+    public int GetIngredient(){
         return ingCode;
     }
 }
