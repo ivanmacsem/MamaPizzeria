@@ -24,4 +24,9 @@ public class Ingredient : MonoBehaviour
     public int GetIngredient(){
         return ingCode;
     }
+    public void AddToPizza(int code)
+    {
+        GameController controller = gameObject.GetComponent<GameController>();
+        controller.AddToCurrentPizza(code);
+    }
 }
