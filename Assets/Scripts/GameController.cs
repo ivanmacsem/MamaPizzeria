@@ -51,6 +51,10 @@ public class GameController : MonoBehaviour
                 currentScoreView.text = currentScore.ToString();
                 if (wrongOrders > 0)
                     wrongOrders = 0;
+                if (currentScore == 25)
+                {
+                    // TODO: Implement "You are now CEO" screen before making this work.
+                }
             }
             else // The pizzas are not equal.
             {
