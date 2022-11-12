@@ -6,8 +6,11 @@ using UnityEngine.EventSystems;
 public class PizzaSlot : MonoBehaviour, IDropHandler
 {
     
-    [SerializeField] Pizza curPiz = null;
+    public Pizza pizza = null;
     [SerializeField] GameController controller = null;
+    [SerializeField] GameObject[] topRVisuals = new GameObject[7];
+    [SerializeField] GameObject[] topLVisuals = new GameObject[7];
+    [SerializeField] GameObject[] botVisuals = new GameObject[7];
 
     private bool topR = false;
     private bool topL = false;
@@ -17,19 +20,54 @@ public class PizzaSlot : MonoBehaviour, IDropHandler
     {
         if (eventData.pointerDrag != null)
         {
-            eventData.pointerDrag.GetComponent<Draggable>().getInstance().GetComponent<RectTransform>().SetParent(GetComponent<RectTransform>());
-            tryAdding(eventData.pointerDrag.GetComponent<Draggable>().gameObject.GetComponent<Ingredient>());
-            eventData.pointerDrag.GetComponent<Draggable>().getInstance().GetComponent<RectTransform>().anchoredPosition = new Vector2(0,0);
+            GameObject dragged = eventData.pointerDrag.GetComponent<Draggable>().getInstance();
+            dragged.GetComponent<RectTransform>().SetParent(GetComponent<RectTransform>());
+            tryAdding(dragged.GetComponent<RectTransform>().anchoredPosition, dragged.GetComponent<Ingredient>());
         }
     }
     void Update()
     {
-        //if(curPiz.IsPizzaFull()){
-            //controller.Finished();
-        //}
+        if(topL && topR && bot){
+            controller.Finished();
+            pizza.resetPizza();
+            reset();
+        }
     }
-    public void tryAdding(Ingredient i){
-        Debug.Log("Tried to add" + i.ingCode);
+    public void tryAdding(Vector2 pos, Ingredient i){
+        if(pos.y <= 0){
+            if(!bot){
+                pizza.AddIngredient(i, 2);
+                bot = true;
+                botVisuals[i.ingCode].SetActive(true);
+            }
+        }
+        else if(pos.x >= 0){
+            if(!topR){
+                pizza.AddIngredient(i, 1);
+                topR = true;
+                topRVisuals[i.ingCode].SetActive(true);
+            }
+        }
+        else if(pos.x < 0){
+            if(!topL){
+                pizza.AddIngredient(i, 1);
+                topL = true;
+                topLVisuals[i.ingCode].SetActive(true);
+            }
+        }
     }
-    //{check position, then using that check the bool corresponding to that section, if empty -> curPiz.AddIngredient(i, 1 if topR or topL or 2 if bot)}
+    public void reset(){
+        foreach(GameObject g in botVisuals){
+            g.SetActive(false);
+        }
+        bot = false;
+        foreach(GameObject g in topLVisuals){
+            g.SetActive(false);
+        }
+        topL = false;
+        foreach(GameObject g in topRVisuals){
+            g.SetActive(false);
+        }
+        topR = false;
+    }
 }

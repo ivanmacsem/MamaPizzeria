@@ -33,9 +33,7 @@ public class Draggable : MonoBehaviour, IEndDragHandler, IDragHandler
     public void OnEndDrag(PointerEventData eventData)
     {
         dragging = false;
-        if(instRect.parent == rectTransform){
-            Destroy(instance);
-        }
+        Destroy(instance);
     }
 
     public GameObject getInstance(){
