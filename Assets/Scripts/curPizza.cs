@@ -8,8 +8,9 @@ public class curPizza : MonoBehaviour
     [SerializeField] GameController controller = null;
     void Update()
     {
-        if(curPiz.IsPizzaFull()){
-            //controller.Finished();
+        if (curPiz.IsPizzaFull())
+        {
+            controller.Finished();
         }
     }
 }
