@@ -14,6 +14,8 @@ public class GameController : MonoBehaviour
     private int currentScore = 0, wrongOrders = 0;
     [SerializeField] PizzaSlot currPizza;
     [SerializeField] Text currentScoreView = null;
+    [SerializeField] GameObject winScreen;
+    [SerializeField] GameObject loseScreen;
     void Start()
     {
         PlayerPrefs.SetInt("curScore", 0);
@@ -47,26 +49,26 @@ public class GameController : MonoBehaviour
                 break;
             }
         }
-        if (equal) // The pizzas are equal.
+        if (equal)
         {
             Debug.Log("Got it!");
             currentScore++;
             if (wrongOrders > 0)
                 wrongOrders = 0;
-            if (currentScore == 25)
+            if (currentScore == 5)
             {
-                // TODO: Implement "You are now CEO" screen before making this work.
+                winScreen.SetActive(true);
             }
             GeneratePizza();
         }
-        else // The pizzas are not equal.
+        else
         {
             Debug.Log("*donald trump voice* Wrong");
             currentScore = 0;
             wrongOrders++;
             if (wrongOrders == 3)
             {
-                // TODO: Implement "You're fired" screen before making this work.
+                loseScreen.SetActive(true);
                 //update high score
             }
             GeneratePizza();
