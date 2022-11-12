@@ -5,38 +5,38 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Draggable : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
+public class Draggable : MonoBehaviour, IEndDragHandler, IDragHandler
 {
+    public Canvas canvas;
     private RectTransform rectTransform;
     public PizzaSlot currentSlot;
-     public GameObject myPrefab;
-
+    public GameObject myPrefab;
+    private GameObject instance;
+    private RectTransform instRect;
+    private bool dragging;
 
     private void Awake()
     {
-        //rectTransform = GetComponent<RectTransform>();
-    }
-
-    public void OnBeginDrag(PointerEventData eventData)
-
-    {
-       // Debug.Log("OnBeginDrag");
+        rectTransform = GetComponent<RectTransform>();
     }
 
     public void OnDrag(PointerEventData eventData)
-
     {
-        //rectTransform.anchoredPosition += eventData.delta;
+        if(!dragging){
+	        instance = Instantiate(myPrefab, eventData.position, Quaternion.identity, rectTransform);
+	        instRect = instance.GetComponent<RectTransform>();
+            dragging = true;
+        }
+        instRect.anchoredPosition += eventData.delta / canvas.scaleFactor;
     }
 
     public void OnEndDrag(PointerEventData eventData)
-
     {
-        //Debug.Log("OnEndDrag");
+        dragging = false;
+        Destroy(instance);
     }
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        Debug.Log("OnPointerDown");
-         Instantiate(myPrefab, new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0), Quaternion.identity);
+
+    public GameObject getInstance(){
+        return instance;
     }
 }

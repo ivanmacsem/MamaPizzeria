@@ -14,9 +14,19 @@ public class Pizza : MonoBehaviour
 
     //1 = 1/4
     //2 = 1/2
-    int[] pizza = new int[7];
+    public int[] pizza = new int[7];
     public void AddIngredient(Ingredient i, int quant){
         int index = i.getIngredient();
         pizza[index] += quant;
+    }
+
+    public void resetPizza(){
+        for(int i = 0; i<pizza.Length; i++){
+            pizza[i]=0;
+        }
+    }
+
+    public int[] GetPizza(){
+        return pizza;
     }
 }
