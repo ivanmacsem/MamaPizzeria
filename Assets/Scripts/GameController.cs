@@ -16,6 +16,7 @@ public class GameController : MonoBehaviour
     [SerializeField] Text currentScoreView = null;
     [SerializeField] GameObject winScreen;
     [SerializeField] GameObject loseScreen;
+    [SerializeField] Text orderList = null;
     void Start()
     {
         PlayerPrefs.SetInt("curScore", 0);
@@ -35,6 +36,21 @@ public class GameController : MonoBehaviour
         expectedPizza.AddIngredient(first, 1);
         expectedPizza.AddIngredient(second, 1);
         expectedPizza.AddIngredient(third, 2);
+        UpdateIngredientList();
+    }
+
+    private void UpdateIngredientList()
+    {
+        string[] quantities = { null, "1/4", "1/2", "3/4" };
+        int[] temp = expectedPizza.GetPizza();
+        string[] ingList = { "arugula", "Basil", "Ham", "Chicken", "Pepperoni", "Supreme Mix", "Mushrooms" };
+        string actualList = "";
+        for (int i = 0; i < temp.Length; i++)
+        {
+            if (temp[i] > 0)
+                actualList += string.Format("{0} {1}\n", quantities[temp[i]], ingList[i]);
+        }
+        orderList.text = actualList;
     }
     void Update(){
         currentScoreView.text = currentScore.ToString();
