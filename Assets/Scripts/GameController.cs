@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     private Pizza expectedPizza;
-    [SerializeField] Pizza currentPizza;
+    [SerializeField] PizzaSlot currentPizza;
     void Start()
     {
        expectedPizza = gameObject.AddComponent<Pizza>();

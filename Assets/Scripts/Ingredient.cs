@@ -11,7 +11,7 @@ public class Ingredient : MonoBehaviour
     // 4 - Pepperoni
     // 5 - Supreme Mix
     // 6 - Mushrooms
-    private int ingCode;
+    public int ingCode;
 
     public Ingredient Setup(int code){
         ingCode = code;

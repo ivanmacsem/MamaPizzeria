@@ -370,6 +370,7 @@ GameObject:
   - component: {fileID: 731962300}
   - component: {fileID: 731962299}
   - component: {fileID: 731962301}
+  - component: {fileID: 731962302}
   m_Layer: 5
   m_Name: C_Ham
   m_TagString: Untagged
@@ -447,9 +448,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c45d41b9ec574304aad7a76c1635b394, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
+  canvas: {fileID: 1356758132}
   currentSlot: {fileID: 2128409231}
-  myPrefab: {fileID: 4333887372861895700, guid: 28de7e6466435eb49ac057ee3bfbbb88, type: 3}
+  myPrefab: {fileID: 4333887372861895700, guid: 449b59b34253eb840b19cef7a487ca7d, type: 3}
+--- !u!114 &731962302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731962297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eac283d5dd85cb64daf25048408f5518, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ingCode: 2
 --- !u!1 &975027923
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,6 +476,7 @@ GameObject:
   - component: {fileID: 975027926}
   - component: {fileID: 975027925}
   - component: {fileID: 975027927}
+  - component: {fileID: 975027928}
   m_Layer: 5
   m_Name: C_Mushroom
   m_TagString: Untagged
@@ -539,9 +554,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c45d41b9ec574304aad7a76c1635b394, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
+  canvas: {fileID: 1356758132}
   currentSlot: {fileID: 2128409231}
-  myPrefab: {fileID: 0}
+  myPrefab: {fileID: 4333887372861895700, guid: 949f622bcdf03784186562b09935eae7, type: 3}
+--- !u!114 &975027928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975027923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eac283d5dd85cb64daf25048408f5518, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ingCode: 6
 --- !u!1 &1067016777
 GameObject:
   m_ObjectHideFlags: 0
@@ -554,6 +582,7 @@ GameObject:
   - component: {fileID: 1067016780}
   - component: {fileID: 1067016779}
   - component: {fileID: 1067016781}
+  - component: {fileID: 1067016782}
   m_Layer: 5
   m_Name: C_Chicken
   m_TagString: Untagged
@@ -631,9 +660,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c45d41b9ec574304aad7a76c1635b394, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
+  canvas: {fileID: 1356758132}
   currentSlot: {fileID: 2128409231}
-  myPrefab: {fileID: 0}
+  myPrefab: {fileID: 4333887372861895700, guid: 686d841eabfe6ae428f20f0805f09262, type: 3}
+--- !u!114 &1067016782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1067016777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eac283d5dd85cb64daf25048408f5518, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ingCode: 3
 --- !u!1 &1356758129
 GameObject:
   m_ObjectHideFlags: 0
@@ -703,7 +745,7 @@ Canvas:
   m_GameObject: {fileID: 1356758129}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 519420031}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -755,6 +797,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b68d4da1bd5d524eba49c97c3be39e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  offset: {x: 0, y: 0, z: 0}
 --- !u!1 &1685391975
 GameObject:
   m_ObjectHideFlags: 0
@@ -767,6 +810,7 @@ GameObject:
   - component: {fileID: 1685391978}
   - component: {fileID: 1685391977}
   - component: {fileID: 1685391979}
+  - component: {fileID: 1685391980}
   m_Layer: 5
   m_Name: C_Arugula
   m_TagString: Untagged
@@ -847,6 +891,19 @@ MonoBehaviour:
   canvas: {fileID: 1356758132}
   currentSlot: {fileID: 2128409231}
   myPrefab: {fileID: 4333887372861895700, guid: 28de7e6466435eb49ac057ee3bfbbb88, type: 3}
+--- !u!114 &1685391980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1685391975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eac283d5dd85cb64daf25048408f5518, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ingCode: 0
 --- !u!1 &1790451320
 GameObject:
   m_ObjectHideFlags: 0
@@ -859,6 +916,7 @@ GameObject:
   - component: {fileID: 1790451323}
   - component: {fileID: 1790451322}
   - component: {fileID: 1790451324}
+  - component: {fileID: 1790451325}
   m_Layer: 5
   m_Name: C_Supreme
   m_TagString: Untagged
@@ -939,6 +997,19 @@ MonoBehaviour:
   canvas: {fileID: 1356758132}
   currentSlot: {fileID: 2128409231}
   myPrefab: {fileID: 4333887372861895700, guid: 214b9ee8a57bfd24db9ec53f3b09c315, type: 3}
+--- !u!114 &1790451325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1790451320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eac283d5dd85cb64daf25048408f5518, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ingCode: 5
 --- !u!1 &1790852113
 GameObject:
   m_ObjectHideFlags: 0
@@ -951,6 +1022,7 @@ GameObject:
   - component: {fileID: 1790852117}
   - component: {fileID: 1790852116}
   - component: {fileID: 1790852115}
+  - component: {fileID: 1790852118}
   m_Layer: 5
   m_Name: C_Pepperoni
   m_TagString: Untagged
@@ -990,9 +1062,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c45d41b9ec574304aad7a76c1635b394, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
+  canvas: {fileID: 1356758132}
   currentSlot: {fileID: 2128409231}
-  myPrefab: {fileID: 0}
+  myPrefab: {fileID: 4333887372861895700, guid: 87927cdb76995b749a5fde09ac30ad0e, type: 3}
 --- !u!114 &1790852116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1031,6 +1103,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1790852113}
   m_CullTransparentMesh: 1
+--- !u!114 &1790852118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1790852113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eac283d5dd85cb64daf25048408f5518, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ingCode: 4
 --- !u!1 &1962740261
 GameObject:
   m_ObjectHideFlags: 0
@@ -1075,7 +1160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91d522db5904c84428e86ad367dac1d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPizza: {fileID: 0}
+  currentPizza: {fileID: 2128409231}
 --- !u!1 &2090599224
 GameObject:
   m_ObjectHideFlags: 0
@@ -1088,6 +1173,7 @@ GameObject:
   - component: {fileID: 2090599227}
   - component: {fileID: 2090599226}
   - component: {fileID: 2090599228}
+  - component: {fileID: 2090599229}
   m_Layer: 5
   m_Name: C_Basil
   m_TagString: Untagged
@@ -1165,9 +1251,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c45d41b9ec574304aad7a76c1635b394, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
+  canvas: {fileID: 1356758132}
   currentSlot: {fileID: 2128409231}
-  myPrefab: {fileID: 4333887372861895700, guid: 28de7e6466435eb49ac057ee3bfbbb88, type: 3}
+  myPrefab: {fileID: 4333887372861895700, guid: 95cc3f86748d83b42adae70428319008, type: 3}
+--- !u!114 &2090599229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2090599224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eac283d5dd85cb64daf25048408f5518, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ingCode: 1
 --- !u!1 &2128409229
 GameObject:
   m_ObjectHideFlags: 0
@@ -1219,6 +1318,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00dbc675714b3784d8802ca518d5bccc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  curPiz: {fileID: 0}
+  controller: {fileID: 1962740264}
 --- !u!114 &2128409232
 MonoBehaviour:
   m_ObjectHideFlags: 0
