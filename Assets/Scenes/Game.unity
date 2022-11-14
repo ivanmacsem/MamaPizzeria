@@ -3368,6 +3368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91d522db5904c84428e86ad367dac1d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOver: 0
   currPizza: {fileID: 2128409231}
   currentScoreView: {fileID: 769892911}
   winScreen: {fileID: 1215061631}
@@ -3866,7 +3867,6 @@ MonoBehaviour:
   - {fileID: 1045837638}
   - {fileID: 444435270}
   - {fileID: 966816946}
-  done: 0
 --- !u!114 &2128409232
 MonoBehaviour:
   m_ObjectHideFlags: 0
