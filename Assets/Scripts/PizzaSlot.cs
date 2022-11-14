@@ -25,14 +25,6 @@ public class PizzaSlot : MonoBehaviour, IDropHandler
             tryAdding(dragged.GetComponent<RectTransform>().anchoredPosition, dragged.GetComponent<Ingredient>());
         }
     }
-    void Update()
-    {
-        if(topL && topR && bot){
-            controller.Finished();
-            pizza.resetPizza();
-            reset();
-        }
-    }
     public void tryAdding(Vector2 pos, Ingredient i){
         if(pos.y <= 0){
             if(!bot){
@@ -55,6 +47,10 @@ public class PizzaSlot : MonoBehaviour, IDropHandler
                 topLVisuals[i.ingCode].SetActive(true);
             }
         }
+        if(topL && topR && bot){
+            controller.Finished();
+            StartCoroutine(WaitToShow(1f));
+        }
     }
     public void reset(){
         foreach(GameObject g in botVisuals){
@@ -69,5 +65,10 @@ public class PizzaSlot : MonoBehaviour, IDropHandler
             g.SetActive(false);
         }
         topR = false;
+    }
+    IEnumerator WaitToShow(float pauseDuration){
+        yield return new WaitForSeconds(pauseDuration);
+        pizza.resetPizza();
+        reset();
     }
 }

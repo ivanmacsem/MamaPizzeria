@@ -8,6 +8,11 @@ using Random = UnityEngine.Random;
 public class GameController : MonoBehaviour
 {
     private Pizza expectedPizza;
+    public bool gameOver = false;
+    private bool timeUp = false;
+    private int seconds = 0;
+    private float timer = 0.0f;
+    private bool checking = false;
     private Ingredient first = null;
     private Ingredient second = null;
     private Ingredient third = null;
@@ -16,6 +21,13 @@ public class GameController : MonoBehaviour
     [SerializeField] Text currentScoreView = null;
     [SerializeField] GameObject winScreen;
     [SerializeField] GameObject loseScreen;
+    [SerializeField] Image curClock;
+    [SerializeField] Sprite[] clock = new Sprite[13];
+    [SerializeField] Image person;
+    [SerializeField] Sprite[] people = new Sprite[4];
+    private int pplIdx = 0;
+    [SerializeField] Text orderList = null;
+    [SerializeField] Text qList = null;
     void Start()
     {
         PlayerPrefs.SetInt("curScore", 0);
@@ -35,11 +47,49 @@ public class GameController : MonoBehaviour
         expectedPizza.AddIngredient(first, 1);
         expectedPizza.AddIngredient(second, 1);
         expectedPizza.AddIngredient(third, 2);
+        UpdateIngredientList();
+    }
+
+    private void UpdateIngredientList()
+    {
+        string[] quantities = { null, "1/4", "1/2", "3/4" };
+        int[] temp = expectedPizza.GetPizza();
+        string[] ingList = { "Arugula", "Basil", "Ham", "Chicken", "Pepperoni", "Supreme Mix", "Mushrooms" };
+        string actualList = "";
+        string quantityList = "";
+        for (int i = 0; i < temp.Length; i++)
+        {
+            if (temp[i] > 0){
+                actualList += string.Format("{0}\n", ingList[i]);
+                quantityList += string.Format("{0}\n", quantities[temp[i]]);
+            }
+        }
+        orderList.text = actualList;
+        qList.text = quantityList;
     }
     void Update(){
         currentScoreView.text = currentScore.ToString();
+        timer += Time.deltaTime;
+        if(!gameOver && !checking){
+            seconds = ((int)(timer % 60));
+            curClock.sprite = clock[seconds];
+        }
+        if(seconds == 12){
+            if(!timeUp){
+                Finished();
+                timeUp = true;
+            }
+        }
+        else{
+            timeUp = false;
+        }
     }
     public void Finished(){
+        StartCoroutine(Finish(1f));
+    }
+    public IEnumerator Finish(float pauseDuration){
+        checking = true;
+        yield return new WaitForSeconds(pauseDuration);
         bool equal = true;
         int[] temp = currPizza.pizza.GetPizza();
         int[] temp2 = expectedPizza.GetPizza();
@@ -51,27 +101,35 @@ public class GameController : MonoBehaviour
         }
         if (equal)
         {
-            Debug.Log("Got it!");
             currentScore++;
             if (wrongOrders > 0)
                 wrongOrders = 0;
             if (currentScore == 5)
             {
                 winScreen.SetActive(true);
+                gameOver = true;
             }
-            GeneratePizza();
         }
         else
         {
-            Debug.Log("*donald trump voice* Wrong");
             currentScore = 0;
             wrongOrders++;
             if (wrongOrders == 3)
             {
                 loseScreen.SetActive(true);
-                //update high score
+                gameOver = true;
+                if(PlayerPrefs.GetInt("HighScore") < currentScore){
+                    PlayerPrefs.SetInt("HighScore", currentScore);
+                }
             }
+        }
+        if(!gameOver){
+            timer = 0;
             GeneratePizza();
+            checking = false;
+            pplIdx++;
+            pplIdx = pplIdx % 4;
+            person.sprite = people[pplIdx];
         }
     }
 }
