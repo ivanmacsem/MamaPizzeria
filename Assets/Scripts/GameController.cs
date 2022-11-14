@@ -23,6 +23,9 @@ public class GameController : MonoBehaviour
     [SerializeField] GameObject loseScreen;
     [SerializeField] Image curClock;
     [SerializeField] Sprite[] clock = new Sprite[13];
+    [SerializeField] Image person;
+    [SerializeField] Sprite[] people = new Sprite[4];
+    private int pplIdx = 0;
     [SerializeField] Text orderList = null;
     [SerializeField] Text qList = null;
     void Start()
@@ -115,13 +118,18 @@ public class GameController : MonoBehaviour
             {
                 loseScreen.SetActive(true);
                 gameOver = true;
-                //update high score
+                if(PlayerPrefs.GetInt("HighScore") < currentScore){
+                    PlayerPrefs.SetInt("HighScore", currentScore);
+                }
             }
         }
         if(!gameOver){
             timer = 0;
             GeneratePizza();
             checking = false;
+            pplIdx++;
+            pplIdx = pplIdx % 4;
+            person.sprite = people[pplIdx];
         }
     }
 }
