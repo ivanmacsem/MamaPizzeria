@@ -25,6 +25,9 @@ public class GameController : MonoBehaviour
     [SerializeField] Sprite[] clock = new Sprite[13];
     [SerializeField] Image person;
     [SerializeField] Sprite[] people = new Sprite[4];
+    [SerializeField] AudioSource aS;
+    [SerializeField] AudioClip correct;
+    [SerializeField] AudioClip incorrect;
     private int pplIdx = 0;
     [SerializeField] Text orderList = null;
     [SerializeField] Text qList = null;
@@ -102,6 +105,7 @@ public class GameController : MonoBehaviour
         if (equal)
         {
             currentScore++;
+            aS.PlayOneShot(correct);
             if (wrongOrders > 0)
                 wrongOrders = 0;
             if (currentScore == 5)
@@ -114,6 +118,7 @@ public class GameController : MonoBehaviour
         {
             currentScore = 0;
             wrongOrders++;
+            aS.PlayOneShot(incorrect);
             if (wrongOrders == 3)
             {
                 loseScreen.SetActive(true);
